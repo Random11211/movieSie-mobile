@@ -19,6 +19,7 @@ import com.mobilne.project.models.MovieRoomDatabase;
 
 import java.util.List;
 
+//import static com.mobilne.project.activities.DatabaseMoviesActivity.movieViewModel;
 import static com.mobilne.project.activities.MainActivity.movieViewModel;
 
 public class PrivateMoviesListAdapter extends RecyclerView.Adapter<PrivateMoviesListAdapter.MovieViewHolder>{

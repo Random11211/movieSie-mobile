@@ -24,6 +24,7 @@
 
         <activity android:name=".activities.MovieDetailsActivity">
         </activity>
+        <activity android:name=".activities.DatabaseMoviesActivity" />
     </application>
 
 </manifest>

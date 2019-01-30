@@ -30,9 +30,9 @@ import com.mobilne.project.models.Trailer;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mobilne.project.activities.MainActivity.movieViewModel;
+//import static com.mobilne.project.activities.DatabaseMoviesActivity.movieViewModel;
 
-//import static com.mobilne.project.activities.MainActivity.movieViewModel;
+import static com.mobilne.project.activities.MainActivity.movieViewModel;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 

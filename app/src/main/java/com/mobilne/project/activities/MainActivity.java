@@ -7,6 +7,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,17 +57,18 @@ public class MainActivity extends AppCompatActivity {
         moviesList.setLayoutManager(new LinearLayoutManager(this));
 
         db = MovieRoomDatabase.getDatabase(this);
+        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
 
         headline = findViewById(R.id.headline);
         getGenres();
 
-        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
-        movieViewModel.getAllMovies().observe(this, new Observer<List<Movie>>() {
-            @Override
-            public void onChanged(@Nullable List<Movie> movies) {
-                moviesFromDatabase = movies;
-            }
-        });
+//        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+//        movieViewModel.getAllMovies().observe(this, new Observer<List<Movie>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Movie> movies) {
+//                moviesFromDatabase = movies;
+//            }
+//        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -106,10 +108,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.your_movies:
-                headline.setText(getString(R.string.private_movies_list));
-                moviesList.setLayoutManager(new GridLayoutManager(this, 2));
-                getYourMovies();
-                moviesList.setAdapter(privateAdapter);
+//                headline.setText(getString(R.string.private_movies_list));
+//                moviesList.setLayoutManager(new GridLayoutManager(this, 2));
+//                getYourMovies();
+//                moviesList.setAdapter(privateAdapter);
+                Intent intent = new Intent(MainActivity.this, DatabaseMoviesActivity.class);
+                startActivity(intent);
                 return true;
 
             default:
