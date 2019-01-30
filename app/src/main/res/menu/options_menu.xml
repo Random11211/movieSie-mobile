@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search_hint"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
+    <item
+        android:id="@+id/popular"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="@string/popular" />
+    <item
+        android:id="@+id/upcoming"
+        android:icon="@android:drawable/ic_media_next"
+        android:title="@string/upcoming" />
+    <item
+        android:id="@+id/your_movies"
+        android:icon="@android:drawable/checkbox_on_background"
+        android:title="@string/your_movies" />
+</menu>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MovieSie</string>
+    <string name="search_hint">Find a movie</string>
+    <string name="app_label">MovieSie</string>
+    <string name="overview">Summary</string>
+    <string name="upcoming">UPCOMING</string>
+    <string name="your_movies">YOUR MOVIES LIST</string>
+    <string name="popular">POPULAR</string>
+    <string name="headline">POPULAR</string>
+    <string name="search">Search results for: %1$s</string>
+    <string name="wantToSee">WISH</string>
+    <string name="wantToSeeToast">A new movie has been ADDED to your Movies List</string>
+    <string name="dontwantToSeeToast">You have just DELETED a movie from your Movies List</string>
+    <string name="private_movies_list">YOUR MOVIES LIST</string>
+    <string name="delete">delete</string>
+</resources>
