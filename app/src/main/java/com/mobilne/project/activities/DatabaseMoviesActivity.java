@@ -54,7 +54,7 @@ public class DatabaseMoviesActivity extends AppCompatActivity {
         headline.setText(getString(R.string.private_movies_list));
         moviesList.setLayoutManager(new GridLayoutManager(this, 2));
 
-        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+//        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
         movieViewModel.getAllMovies().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
