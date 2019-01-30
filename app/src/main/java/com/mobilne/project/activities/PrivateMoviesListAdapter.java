@@ -19,6 +19,8 @@ import com.mobilne.project.models.MovieRoomDatabase;
 
 import java.util.List;
 
+import static com.mobilne.project.activities.MainActivity.movieViewModel;
+
 public class PrivateMoviesListAdapter extends RecyclerView.Adapter<PrivateMoviesListAdapter.MovieViewHolder>{
 
     private String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/w500";
@@ -67,6 +69,7 @@ public class PrivateMoviesListAdapter extends RecyclerView.Adapter<PrivateMovies
                 @Override
                 public void onClick(View v) {
 //                    db.movieDao().deleteMovieFromList(movie);
+                    movieViewModel.deleteMovieFromList(movie);
                     Toast.makeText(delete.getContext(), R.string.dontwantToSeeToast, Toast.LENGTH_SHORT).show();
                 }
             });

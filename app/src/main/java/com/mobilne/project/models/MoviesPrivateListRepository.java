@@ -8,8 +8,8 @@ import java.util.List;
 
 public class MoviesPrivateListRepository {
     private MovieDao movieDao;
-//    private LiveData<List<Movie>> allMovies;
-    private List<Movie> allMovies;
+    private LiveData<List<Movie>> allMovies;
+//    private List<Movie> allMovies;
 
     MoviesPrivateListRepository(Application application) {
         MovieRoomDatabase db = MovieRoomDatabase.getDatabase(application);
@@ -17,13 +17,13 @@ public class MoviesPrivateListRepository {
         allMovies = movieDao.getAllMovies();
     }
 
-//    LiveData<List<Movie>> getAllMovies() {
-//        return allMovies;
-//    }
-
-    List<Movie> getAllMovies() {
+    LiveData<List<Movie>> getAllMovies() {
         return allMovies;
     }
+
+//    List<Movie> getAllMovies() {
+//        return allMovies;
+//    }
 
 
     public void addMovieToList (Movie movie) {

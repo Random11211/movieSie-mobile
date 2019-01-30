@@ -1,7 +1,9 @@
 package com.mobilne.project.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -27,6 +29,8 @@ import com.mobilne.project.models.Trailer;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mobilne.project.activities.MainActivity.movieViewModel;
 
 //import static com.mobilne.project.activities.MainActivity.movieViewModel;
 
@@ -97,17 +101,30 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
                 wantToSee.setSelected(movie.getStateWish());
                 wantToSee.setOnClickListener(new View.OnClickListener() {
+                    @SuppressLint("StaticFieldLeak")
                     @Override
                     public void onClick(View v) {
                         boolean newState = !movie.getStateWish();
                         movie.setStateWish(newState);
                         wantToSee.setSelected(movie.getStateWish());
 
-                        if(movie.getStateWish().equals(true)){
-//                            movieViewModel.addMovieToList(movie);
-                            db.movieDao().addMovieToList(movie);
-                            Toast.makeText(wantToSee.getContext(), R.string.wantToSeeToast,  Toast.LENGTH_SHORT).show();
+                        if (movie.getStateWish().equals(true)) {
+                            movieViewModel.addMovieToList(movie);
+//                            db.movieDao().addMovieToList(movie);
+                            Toast.makeText(wantToSee.getContext(), R.string.wantToSeeToast, Toast.LENGTH_SHORT).show();
                         }
+
+//                        if(movie.getStateWish().equals(true)){
+////                            movieViewModel.addMovieToList(movie);
+//                            new AsyncTask<Void, Void, Void>() {
+//                                @Override
+//                                protected Void doInBackground(Void... voids) {
+//                                    db.movieDao().addMovieToList(movie);
+//                                    return null;
+//                                }
+//                            };
+//                            Toast.makeText(wantToSee.getContext(), R.string.wantToSeeToast,  Toast.LENGTH_SHORT).show();
+//                        }
                     }
                 });
             }

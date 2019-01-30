@@ -14,8 +14,8 @@ import retrofit2.http.DELETE;
 public interface MovieDao {
 
     @Query("SELECT * from movie_table ORDER BY title ASC")
-    List<Movie> getAllMovies();
-//    LiveData<List<Movie>> getAllMovies();
+//    List<Movie> getAllMovies();
+    LiveData<List<Movie>> getAllMovies();
 
     @Insert
     void addMovieToList(Movie movie);

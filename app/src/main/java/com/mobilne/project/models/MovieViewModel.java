@@ -10,8 +10,8 @@ import java.util.List;
 public class MovieViewModel extends AndroidViewModel {
 
     private MoviesPrivateListRepository repository;
-//    private LiveData<List<Movie>> allMovies;
-    private List<Movie> allMovies;
+    private LiveData<List<Movie>> allMovies;
+//    private List<Movie> allMovies;
 
     public MovieViewModel(@NonNull Application application) {
         super(application);
@@ -19,12 +19,12 @@ public class MovieViewModel extends AndroidViewModel {
         allMovies = repository.getAllMovies();
     }
 
-//    public LiveData<List<Movie>> getAllMovies() {
-//        return allMovies;
-//    }
-    public List<Movie> getAllMovies() {
-    return allMovies;
-}
+    public LiveData<List<Movie>> getAllMovies() {
+        return allMovies;
+    }
+//    public List<Movie> getAllMovies() {
+//    return allMovies;
+//}
 
 
     public void addMovieToList (Movie movie) {

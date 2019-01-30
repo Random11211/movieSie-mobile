@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private MoviesRepository moviesRepository;
     private TextView headline;
 
-    //    public static MovieViewModel movieViewModel;
+    public static MovieViewModel movieViewModel;
     public MovieRoomDatabase db;
 
     @Override
@@ -60,7 +60,13 @@ public class MainActivity extends AppCompatActivity {
         headline = findViewById(R.id.headline);
         getGenres();
 
-//        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+        movieViewModel.getAllMovies().observe(this, new Observer<List<Movie>>() {
+            @Override
+            public void onChanged(@Nullable List<Movie> movies) {
+                moviesFromDatabase = movies;
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,15 +139,8 @@ public class MainActivity extends AppCompatActivity {
         moviesRepository.getMovies(page, new OnGetMoviesCallback() {
             @Override
             public void onSuccess(int page, List<Movie> movies) {
-                if (adapter == null) {
-                    adapter = new MoviesAdapter(movies, movieGenres, callback);
-                    moviesList.setAdapter(adapter);
-                } else {
-                    if (page == 1) {
-                        adapter.clearMovies();
-                    }
-                    adapter.appendMovies(movies);
-                }
+                adapter = new MoviesAdapter(movies, movieGenres, callback);
+                moviesList.setAdapter(adapter);
             }
 
             @Override
@@ -158,16 +157,10 @@ public class MainActivity extends AppCompatActivity {
         moviesRepository.getUpcoming(page, new OnGetMoviesCallback() {
             @Override
             public void onSuccess(int page, List<Movie> movies) {
-                if (adapter == null) {
-                    adapter = new MoviesAdapter(movies, movieGenres, callback);
-                    moviesList.setAdapter(adapter);
-                } else {
-                    if (page == 1) {
-                        adapter.clearMovies();
-                    }
-                    adapter.appendMovies(movies);
-                }
+                adapter = new MoviesAdapter(movies, movieGenres, callback);
+                moviesList.setAdapter(adapter);
             }
+
 
             @Override
             public void onError() {
@@ -178,21 +171,23 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     private void getYourMovies() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                List<Movie> all = db.movieDao().getAllMovies();
-                moviesFromDatabase = all;
-                MainActivity.this.runOnUiThread(new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        privateAdapter = new PrivateMoviesListAdapter(moviesFromDatabase, callback);
-                    }
-                }) {
-                });
-                return null;
-            }
-        }.execute();
+        privateAdapter = new PrivateMoviesListAdapter(moviesFromDatabase, callback);
+
+//        new AsyncTask<Void, Void, Void>() {
+//            @Override
+//            protected Void doInBackground(Void... voids) {
+//                List<Movie> all = db.movieDao().getAllMovies();
+//                moviesFromDatabase = all;
+//                MainActivity.this.runOnUiThread(new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        privateAdapter = new PrivateMoviesListAdapter(moviesFromDatabase, callback);
+//                    }
+//                }) {
+//                });
+//                return null;
+//            }
+//        }.execute();
     }
 
 
